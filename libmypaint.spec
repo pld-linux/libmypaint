@@ -8,9 +8,12 @@ Group:		Libraries
 URL:		https://github.com/mypaint/libmypaint
 Source0:	https://github.com/mypaint/libmypaint/releases/download/v%{version}/%{name}-%{version}.tar.xz
 # Source0-md5:	2e7200c7873514dfca26eea9e3d273f5
+Patch0:		%{name}-gegl.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	babl-devel
 BuildRequires:	gcc
-BuildRequires:	gegl-devel >= 0.3.0
+BuildRequires:	gegl-devel >= 0.4.0
 BuildRequires:	glib2-devel
 BuildRequires:	gobject-introspection-devel
 BuildRequires:	intltool
@@ -34,8 +37,12 @@ This package contains files needed for development with libmypaint.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
+%{__aclocal}
+%{__autoconf}
+%{__automake}
 %configure \
 	%{?with_doc:--enable-docs} \
 	--enable-introspection=yes \
@@ -51,7 +58,7 @@ rm -rf $RPM_BUILD_ROOT
 
 find $RPM_BUILD_ROOT%{_libdir} -name '*.la' -delete -print
 
-rm -r $RPM_BUILD_ROOT/usr/share/locale/{es_ES,nn_NO}
+rm -r $RPM_BUILD_ROOT%{_localedir}/{es_ES,nn_NO}
 
 %find_lang %{name}
 

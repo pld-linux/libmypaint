@@ -2,7 +2,7 @@
 Summary:	Library for making brush strokes
 Name:		libmypaint
 Version:	1.3.0
-Release:	1
+Release:	2
 License:	ISC
 Group:		Libraries
 URL:		https://github.com/mypaint/libmypaint

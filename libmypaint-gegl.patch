@@ -38,3 +38,33 @@
  MyPaintGegl_@LIBMYPAINT_MAJOR_VERSION@_@LIBMYPAINT_MINOR_VERSION@_gir_CFLAGS = $(AM_CFLAGS) $(AM_CPPFLAGS) -I. -I..
  MyPaintGegl_@LIBMYPAINT_MAJOR_VERSION@_@LIBMYPAINT_MINOR_VERSION@_gir_LIBS = libmypaint-gegl.la ../libmypaint.la
  MyPaintGegl_@LIBMYPAINT_MAJOR_VERSION@_@LIBMYPAINT_MINOR_VERSION@_gir_FILES = $(introspection_sources)
+--- libmypaint-1.3.0/gegl/libmypaint-gegl.pc.in.orig	2016-05-17 20:55:34.000000000 +0200
++++ libmypaint-1.3.0/gegl/libmypaint-gegl.pc.in	2019-06-13 20:01:16.545170043 +0200
+@@ -6,6 +6,6 @@ includedir=@includedir@
+ Name: libmypaint
+ Description: MyPaint brush engine library, with GEGL integration.
+ Version: @LIBMYPAINT_VERSION@
+-Requires: gegl-0.3 libmypaint
++Requires: gegl-0.4 libmypaint
+ Cflags: -I${includedir}/libmypaint-gegl
+ Libs: -L${libdir} -lmypaint-gegl
+--- libmypaint-1.3.0/gegl/mypaint-gegl-surface.c.orig	2016-06-02 17:43:32.000000000 +0200
++++ libmypaint-1.3.0/gegl/mypaint-gegl-surface.c	2019-06-13 19:04:35.830259962 +0200
+@@ -78,7 +78,7 @@ tile_request_start(MyPaintTiledSurface *
+ 
+     if (buffer_is_native(self)) {
+         GeglBufferIterator *iterator = gegl_buffer_iterator_new(self->buffer, &tile_bbox, 0, self->format,
+-                                      read_write_flags, GEGL_ABYSS_NONE);
++                                      read_write_flags, GEGL_ABYSS_NONE, 1);
+ 
+         // Read out
+         gboolean completed = gegl_buffer_iterator_next(iterator);
+@@ -88,7 +88,7 @@ tile_request_start(MyPaintTiledSurface *
+             g_critical("Unable to get tile aligned access to GeglBuffer");
+             request->buffer = NULL;
+         } else {
+-            request->buffer = (uint16_t *)(iterator->data[0]);
++            request->buffer = (uint16_t *)(iterator->items[0].data);
+         }
+ 
+         // So we can finish the iterator in tile_request_end()

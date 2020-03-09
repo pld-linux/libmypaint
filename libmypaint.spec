@@ -6,13 +6,13 @@
 Summary:	Library for making brush strokes
 Summary(pl.UTF-8):	Biblioteka do wykonywania dotknięć pędzla
 Name:		libmypaint
-Version:	1.3.0
-Release:	3
+Version:	1.5.1
+Release:	1
 License:	ISC
 Group:		Libraries
+#Source0Download: https://github.com/mypaint/libmypaint/releases
 Source0:	https://github.com/mypaint/libmypaint/releases/download/v%{version}/%{name}-%{version}.tar.xz
-# Source0-md5:	2e7200c7873514dfca26eea9e3d273f5
-Patch0:		%{name}-gegl.patch
+# Source0-md5:	60334e7449ea05674714b1c7098b5383
 URL:		http://mypaint.org/
 BuildRequires:	autoconf >= 2.62
 BuildRequires:	automake
@@ -70,7 +70,6 @@ Dokumentacja API biblioteki libmypaint.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{__libtoolize}
@@ -94,8 +93,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libmypaint*.la
 
-# a copy of es
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/es_ES
 # unify name
 %{__mv} $RPM_BUILD_ROOT%{_localedir}/{nn_NO,nn}
 
@@ -110,12 +107,12 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc COPYING README.md TODO
-%attr(755,root,root) %ghost %{_libdir}/libmypaint-1.3.so.0
-%attr(755,root,root) %{_libdir}/libmypaint-1.3.so.*.*
-%attr(755,root,root) %ghost %{_libdir}/libmypaint-gegl.so.0
+%attr(755,root,root) %{_libdir}/libmypaint-1.5.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libmypaint-1.5.so.1
 %attr(755,root,root) %{_libdir}/libmypaint-gegl.so.*.*
-%{_libdir}/girepository-1.0/MyPaint-1.3.typelib
-%{_libdir}/girepository-1.0/MyPaintGegl-1.3.typelib
+%attr(755,root,root) %ghost %{_libdir}/libmypaint-gegl.so.0
+%{_libdir}/girepository-1.0/MyPaint-1.5.typelib
+%{_libdir}/girepository-1.0/MyPaintGegl-1.5.typelib
 
 %files devel
 %defattr(644,root,root,755)
@@ -125,8 +122,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/libmypaint-gegl
 %{_pkgconfigdir}/libmypaint.pc
 %{_pkgconfigdir}/libmypaint-gegl.pc
-%{_datadir}/gir-1.0/MyPaint-1.3.gir
-%{_datadir}/gir-1.0/MyPaintGegl-1.3.gir
+%{_datadir}/gir-1.0/MyPaint-1.5.gir
+%{_datadir}/gir-1.0/MyPaintGegl-1.5.gir
 
 %if %{with apidocs}
 %files apidocs

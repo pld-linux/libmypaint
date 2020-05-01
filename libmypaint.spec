@@ -6,13 +6,13 @@
 Summary:	Library for making brush strokes
 Summary(pl.UTF-8):	Biblioteka do wykonywania dotknięć pędzla
 Name:		libmypaint
-Version:	1.5.1
+Version:	1.6.0
 Release:	1
 License:	ISC
 Group:		Libraries
 #Source0Download: https://github.com/mypaint/libmypaint/releases
 Source0:	https://github.com/mypaint/libmypaint/releases/download/v%{version}/%{name}-%{version}.tar.xz
-# Source0-md5:	60334e7449ea05674714b1c7098b5383
+# Source0-md5:	546e8e550938bef8ca16847ed0728354
 URL:		http://mypaint.org/
 BuildRequires:	autoconf >= 2.62
 BuildRequires:	automake
@@ -28,8 +28,6 @@ BuildRequires:	json-c-devel
 BuildRequires:	pkgconfig >= 1:0.16
 %if %{with apidocs}
 BuildRequires:	doxygen
-BuildRequires:	python-breathe
-BuildRequires:	sphinx-pdg-2
 %endif
 Requires:	gegl >= 0.4.14
 Conflicts:	mypaint < 1.3.0
@@ -107,12 +105,12 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc COPYING README.md TODO
-%attr(755,root,root) %{_libdir}/libmypaint-1.5.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libmypaint-1.5.so.1
+%attr(755,root,root) %{_libdir}/libmypaint-1.6.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libmypaint-1.6.so.1
 %attr(755,root,root) %{_libdir}/libmypaint-gegl.so.*.*
 %attr(755,root,root) %ghost %{_libdir}/libmypaint-gegl.so.0
-%{_libdir}/girepository-1.0/MyPaint-1.5.typelib
-%{_libdir}/girepository-1.0/MyPaintGegl-1.5.typelib
+%{_libdir}/girepository-1.0/MyPaint-1.6.typelib
+%{_libdir}/girepository-1.0/MyPaintGegl-1.6.typelib
 
 %files devel
 %defattr(644,root,root,755)
@@ -122,11 +120,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/libmypaint-gegl
 %{_pkgconfigdir}/libmypaint.pc
 %{_pkgconfigdir}/libmypaint-gegl.pc
-%{_datadir}/gir-1.0/MyPaint-1.5.gir
-%{_datadir}/gir-1.0/MyPaintGegl-1.5.gir
+%{_datadir}/gir-1.0/MyPaint-1.6.gir
+%{_datadir}/gir-1.0/MyPaintGegl-1.6.gir
 
 %if %{with apidocs}
 %files apidocs
 %defattr(644,root,root,755)
-%doc doc/build/{_static,*.html,*.js}
+%doc doc/build/{search,*.css,*.html,*.js,*.png}
 %endif

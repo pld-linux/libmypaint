@@ -6,13 +6,13 @@
 Summary:	Library for making brush strokes
 Summary(pl.UTF-8):	Biblioteka do wykonywania dotknięć pędzla
 Name:		libmypaint
-Version:	1.6.0
+Version:	1.6.1
 Release:	1
 License:	ISC
 Group:		Libraries
 #Source0Download: https://github.com/mypaint/libmypaint/releases
 Source0:	https://github.com/mypaint/libmypaint/releases/download/v%{version}/%{name}-%{version}.tar.xz
-# Source0-md5:	546e8e550938bef8ca16847ed0728354
+# Source0-md5:	7f1dab2d30ce8a3f494354c7c77a2977
 URL:		http://mypaint.org/
 BuildRequires:	autoconf >= 2.62
 BuildRequires:	automake
@@ -105,8 +105,8 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc COPYING README.md TODO
-%attr(755,root,root) %{_libdir}/libmypaint-1.6.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libmypaint-1.6.so.1
+%attr(755,root,root) %{_libdir}/libmypaint.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libmypaint.so.0
 %attr(755,root,root) %{_libdir}/libmypaint-gegl.so.*.*
 %attr(755,root,root) %ghost %{_libdir}/libmypaint-gegl.so.0
 %{_libdir}/girepository-1.0/MyPaint-1.6.typelib

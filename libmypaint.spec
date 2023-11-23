@@ -26,6 +26,7 @@ BuildRequires:	intltool
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	json-c-devel
 BuildRequires:	pkgconfig >= 1:0.16
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 %if %{with apidocs}
@@ -62,6 +63,7 @@ wykorzystujących bibliotekę libmypaint.
 Summary:	API documentation for libmypaint library
 Summary(pl.UTF-8):	Dokumentacja API biblioteki libmypaint
 Group:		Documentation
+BuildArch:	noarch
 
 %description apidocs
 API documentation for libmypaint library.

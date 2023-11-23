@@ -7,7 +7,7 @@ Summary:	Library for making brush strokes
 Summary(pl.UTF-8):	Biblioteka do wykonywania dotknięć pędzla
 Name:		libmypaint
 Version:	1.6.1
-Release:	1
+Release:	2
 License:	ISC
 Group:		Libraries
 #Source0Download: https://github.com/mypaint/libmypaint/releases
@@ -47,6 +47,7 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	gegl-devel >= 0.4.14
 Requires:	glib2-devel >= 2.0
 Requires:	json-c-devel
+%{?with_openmp:Requires:	libgomp-devel}
 
 %description devel
 This package contains files needed for development with libmypaint.

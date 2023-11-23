@@ -26,6 +26,8 @@ BuildRequires:	intltool
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	json-c-devel
 BuildRequires:	pkgconfig >= 1:0.16
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 %if %{with apidocs}
 BuildRequires:	doxygen
 %endif
